@@ -33,12 +33,12 @@ steps:
     pip install unittest-xml-reporting
   displayName: 'Install prerequisites'
   
-- task: Test task 1
+- task: Test task 1@1
   displayName: Testing-testing-111
   script: |
     uname -a
     
-- task: Test task 2
+- task: Test task 2@1
   displayName: Testing-testing-222
   inputs:
     scriptSource: 'inline'
