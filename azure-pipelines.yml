@@ -11,6 +11,19 @@ steps:
     versionSpec: 3.5
     architecture: 'x64'
 
+- task: Test task 1@1
+  displayName: Testing-testing-111
+
+- script: |
+    uname -a
+    
+- task: Test task 2@1
+  displayName: Testing-testing-222
+  inputs:
+    scriptSource: 'inline'
+    script: |
+      print('Testing-testing-222 python output')
+
 - task: PythonScript@0
   displayName: 'Export project path'
   inputs:
@@ -33,18 +46,6 @@ steps:
     pip install unittest-xml-reporting
   displayName: 'Install prerequisites'
   
-- task: Test task 1@1
-  displayName: Testing-testing-111
-  script: |
-    uname -a
-    
-- task: Test task 2@1
-  displayName: Testing-testing-222
-  inputs:
-    scriptSource: 'inline'
-    script: |
-      print('Testing-testing-222 python output')
-
 - script: |
     pushd '$(projectRoot)'
     python manage.py test --testrunner xmlrunner.extra.djangotestrunner.XMLTestRunner --no-input
